@@ -3,7 +3,7 @@ name: Deploying testing environment
   push:
     branches:
       - master
-  job:
+  jobs:
     deploy_testing:
       runs-on: ubuntu-latest
       steps:
