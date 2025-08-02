@@ -1,15 +1,18 @@
 name: Deploying testing environment
- on:
+
+on:
   push:
     branches:
       - master
-  jobs:
-    deploy_testing:
-      runs-on: ubuntu-latest
-      steps:
+
+jobs:  # <-- changed from "job" to "jobs"
+  deploy_testing:
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Deploy to UAT_server
+
+      - name: Deploy to UAT server
         uses: appleboy/ssh-action@v1.1.0
         with:
           host: ${{ secrets.HOST }}
@@ -19,7 +22,3 @@ name: Deploying testing environment
             cd /home/ubuntu/devops
             ./deploy.sh
             echo "Deployment to UAT server completed successfully."
-
-
-
-  
